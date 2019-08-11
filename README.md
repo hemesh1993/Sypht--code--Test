@@ -11,7 +11,7 @@ Input date format: DD/MM/YYY
 Example: daycalculator.py -s 20/05/2010 -e 11/08/2019
 
 
-##Conditions to consider:
+## Conditions to consider:
              
 • A date defined by three integer values: y (year), m (month) and d (day).
 
@@ -24,14 +24,14 @@ Note that this just simplifies the explanation but is actually no constraint bec
 
 •	Example dates are given in form DD/MM/YYYY e.g.  09/08/2019.
 
-###A) Function[isLeapYear] to detect if the current year is a leap year. A leap year is divisible by 4 but not divisible by 100, with the exception that if it's divisible by 400 it's again a leap year.
+### A) Function[isLeapYear] to detect if the current year is a leap year. A leap year is divisible by 4 but not divisible by 100, with the exception that if it's divisible by 400 it's again a leap year.
 
 
-###B) Function [check date]:
+### B) Function [check date]:
 If date1[start date] lies before date2[End date]. First check the year: If y1 < y2 date1 lies before date2. If y1 > y2 then not. More interesting is the case when y1 equals y2: Then we have to look at the months: if m1 < m2, date1 precedes date2; if m1 > m2, then date1 is after date2. Again, if m1 == m2, we have finally to check d1 against d2
 
 
-###C) Lookup table is used which holds the accumulated days of all whole months. The month is used as the index for access. 
+### C) Lookup table is used which holds the accumulated days of all whole months. The month is used as the index for access. 
 
 E.g. --- For March, we get 59 because January and February (which are the preceding full months of March) have together 59 days (31+28). As you might guess now, we will use actually two lookup table, one for leap years and the other for non-leap years as the values differ starting from February. Do not get confused by the fact we start counting the months from 1 (January) while the arrays are started from Zero. Here are both tables:
 
@@ -39,7 +39,7 @@ E.g. --- For March, we get 59 because January and February (which are the preced
               noofDaysTillMonthLeapYear =  [ 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335]
 
 
-###D)Assume we just want to get the difference from 01-01 of any year to the origin, thus only full years. Well, what we have need is the number of leap years in this duration - this gives us the number of additional days to add. Because the origin year is 1, we can derive following formula:
+### D)Assume we just want to get the difference from 01-01 of any year to the origin, thus only full years. Well, what we have need is the number of leap years in this duration - this gives us the number of additional days to add. Because the origin year is 1, we can derive following formula:
                     
                     Formulae: numOfLeapsYear  = (year-1) / 4 - (year-1) / 100 + (year-1) / 400
 
@@ -55,7 +55,7 @@ To add the remaining days of the given date, use again the lookup tables to add 
 
 
 
-##Explanation
+## Explanation
 
 The code is written in the form of try-exception blocks so that any sort of error can be handled properly. In the code, argparse module is deployed to make the code reproduceable and of user-friendly command-line interfaces as the module automatically generates help and usage messages and issues errors when invalid inputs are passed.
 
