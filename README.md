@@ -2,7 +2,8 @@
 
 Difference Between Dates:
 
-###Instructions to run the script:
+## Instructions to run the script:
+                       
                        # dayscalculator.py -s  startdate -e  enddate
 
 Input date format: DD/MM/YYY
